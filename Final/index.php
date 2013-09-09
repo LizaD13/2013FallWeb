@@ -14,7 +14,16 @@
   </head>
   <body>
     <h1>This is the Final Project</h1>
+    
+    <? 
+    
+    	$msg = 'Hello '; 
+		$name = 'Liza';
+    	include 'something.php'
+    ?>
 
+	<span class ="label"> <?= $msg . $name ?></span>
+	
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   </body>

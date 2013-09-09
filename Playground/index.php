@@ -18,28 +18,16 @@
     </style>
   </head>
   <body>
-    <h1>This is the Playground</h1>
-    
-		   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-		<div class="container">
-		<div class="row">
-		  <div class="col-xs-12 col-md-8">.col-xs-12 col-md-8</div>
-		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-		</div>
-		
-		<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-		<div class="row">
-		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-		  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-		</div>
-		
-		<!-- Columns are always 50% wide, on mobile and desktop -->
-		<div class="row">
-		  <div class="col-xs-6">.col-xs-6</div>
-		  <div class="col-xs-6">.col-xs-6</div>
-		</div>
-		</div>
+  	<? include 'nav.php' ?>
+    		</div>
+    		<div class="span12">
+    			<h1>Hello World!</h1>
+    			<p>Welcome class of 2013 to Web Server Programming</p>
+    		</div>
+    	
+    </div>
+    </div>
+    </div>
 
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
