@@ -1,3 +1,7 @@
+<?
+
+	$location = 'home';?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,22 +15,19 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-    <style>
-    	.row div{
-    		background-color: #AACCCC;
-    	}
-    </style>
+  
   </head>
   <body>
 	  	<? include 'nav.php' ?>
-	    		</div>
+	  	
+	 <div class="container">	
 	    		<div class="jumbotron">
-	  <div class="container">
-	    <h1>Hello, world!</h1>
+
+	    <h1>Hello, World!</h1>
 	    <p>Welcome class of 2013 to Web Server Programming</p>
-	    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+	    <a class="btn btn-success btn-lg">Learn more</a>
 	  </div>
-	</div>
+	
 	
 	<div class="row">
 		
@@ -52,11 +53,17 @@
 	          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 	          <p><a class="btn btn-primary" href="#">View details »</a></p>
   			</div>
+		</div>
 	</div>
 
- 
 
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="Scripts/main.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		$(".nav .home").addClass("active");
+    	});
+    </script>
   </body>
 </html>

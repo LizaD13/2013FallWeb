@@ -1,4 +1,28 @@
-<nav class="navbar navbar-default" role="navigation">
+<?
+	$pages = array(
+		array(
+		'url' => 'index.php',
+		'section' => 'home',
+		'title' => 'Home'
+		),
+		array(
+		'url'=>'links.php',
+		'section' => 'links',
+		'title' => 'Links'
+		),
+		array(
+		'url'=>'contact.php',
+		'section' => 'contact',
+		'title' => 'Contact'
+		),
+	);
+
+	
+	$name = $pages[$location];
+	$msg = "Hello $name[title]";
+?>
+
+<div class="navbar navbar-inverse-fixed-top navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -13,9 +37,16 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
+    	
+    	
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Contact</a></li>
       <li><a href="#">Links</a></li>
+      
+      <? foreach ($pages as $name => $data): ?>
+			<li class="<?=$data['section']?><? if($location == $data['section']) echo "active";?> <a href="<?=$data['url']?>"> <?$data['title']?></a></li>
+		<? endforeach; ?>
+      
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -32,4 +63,8 @@
     
     </ul>
   </div><!-- /.navbar-collapse -->
-</nav>
+</div>
+
+<pre class="container">
+	<? echo json_encode($pages, null, 1); ?>
+</pre>
