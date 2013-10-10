@@ -5,5 +5,3 @@ $model = Users::Get();
 $view  = 'list.php';
 
 include '../Shared/_Layout.php';
-
-
