@@ -5,20 +5,14 @@
  */
 class Users {
 	
-	static public function Get()
+	static public function Get($id=null)
 	{
-		$ret = array();
-		$conn = GetConnection();
-		$result = $conn->query('SELECT * FROM 2013Fall_Users');
-		
-		while ($rs = $result->fetch_assoc()) {
-			$ret[] = $rs;
-		}
-		
-		$conn->close();
-		return $ret;
-	}
-	
+		if(isset($id)){
+			return fetch_all("SELECT * FROM 2013FALL_USERS WHERE id=$id");
+		}else{
+			return fetch_all('SELECT * FROM 2013FALL_USERS');
+		} 				
+	}	
 	
 }
  

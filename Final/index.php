@@ -16,7 +16,7 @@
 
   </head>
   <body>
-    <h1>This is the final</h1>
+   <div class"container"><h1>This is the final</h1>
     
     <?
     
@@ -28,6 +28,7 @@
 		<? print_r($rs); ?>
 	</pre>
 	<span class="label label-success"><?= $msg . $name ?></span>
+	</div> 
 	
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
