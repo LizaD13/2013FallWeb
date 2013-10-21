@@ -10,13 +10,18 @@ switch ($action) {
 		break;
 		
 	case 'new':
-	
 		$view  = 'new.php';		
 		break;
 		
 	case 'save':
-		$model = Users::Get($_REQUEST['id']);
-		$view  = 'details.php';		
+		$errors = Users::Save($_REQUEST);
+		if($errors){
+			$model = $_REQUEST;
+			$view = 'new.php';
+		}else{
+			header("Location ?");
+			die();
+		}
 		break;
 		
 	case 'edit':

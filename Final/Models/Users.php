@@ -14,5 +14,20 @@ class Users {
 		} 				
 	}	
 	
+	static public function Save($row)
+	{
+		$sql = 	" Insert Into 2013FALL_USERS (FistName, LastName, Password, UserType) "
+			.	" Values ('$row[FirstName]', '$row[LastName]', '$row[Password]', '$row[UserType]',) ";
+		$conn = GetConnection();
+		$conn->query($sql);
+		$error = $conn->error;
+		$conn->close();
+		
+		if($error) {
+			return array('db_error' => $error);
+		}else {
+			return false;
+		}
+	}
 }
  
