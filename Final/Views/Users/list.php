@@ -23,8 +23,8 @@
 			<td><?=$rs['UserType']?></td>
 			<td>
 				<a class="glyphicon .glyphicon-file" href="?action=details&id=<?=$rs['id']?>"/>
-				<a class="glyphicon .glyphicon-pencil" href="?action=details&id=<?=$rs['id']?>"/>
-				<a class="glyphicon .glyphicon-trash" href="?action=details&id=<?=$rs['id']?>"/>
+				<a class="glyphicon .glyphicon-pencil" href="?action=edit&id=<?=$rs['id']?>"/>
+				<a class="glyphicon .glyphicon-trash" href="?action=delete&id=<?=$rs['id']?>"/>
 			</td>
 		</tr>
 			

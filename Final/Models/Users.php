@@ -29,5 +29,25 @@ class Users {
 			return false;
 		}
 	}
+	
+	/* leaves all the user input sections blank isntead of showing error */
+	static public function Blank(){
+		return array( 'FirstName' => null, 'LastName' => null, 'Password' => null, 'UserType' => null, 'FBID' => null);
+	}
+	
+	/* make sure all neccessay input is there more code needed in Views/Users/Index.php & ../new*/
+	static public function Validate($row){
+		$errors = array();
+		if(!$row['FirstName']) $errors['FirstName'] = 'is required';
+		if(!$row['LastName']) $errors['LastName'] = 'is required';
+		if(!is_numeric($row['UserType'])) $errors['UserType'] = 'must be a number';
+		if(!$row['UserType']) $errors['UserType'] = 'is required!';
+		
+		if(count($errors) == 0){
+			return false;
+		}else{
+			return $errors;
+		}
+	}
 }
  
