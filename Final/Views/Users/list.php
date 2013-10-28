@@ -22,7 +22,7 @@
 			<td><?=$rs['LastName']?></td>
 			<td><?=$rs['UserType']?></td>
 			<td>
-				<a class="glyphicon .glyphicon-file" href="?action=details&id=<?=$rs['id']?>"/>
+				<a class="glyphicon .glyphicon-file" href="?action=details&id=<?=$rs['id']?>" data-toggle="#mymodal/>
 				<a class="glyphicon .glyphicon-pencil" href="?action=edit&id=<?=$rs['id']?>"/>
 				<a class="glyphicon .glyphicon-trash" href="?action=delete&id=<?=$rs['id']?>"/>
 			</td>
@@ -33,6 +33,9 @@
 
 </table>
 </div>
+
+<div id="mymodal> </div>
+
 
 <?function Scriots(){ ?>
 	<script src='//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js'></script>
