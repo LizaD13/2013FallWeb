@@ -1,45 +1,42 @@
-<link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet"/>
-
-<div class ="container">
+<link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" />
+<div class="container">
 	
 	<h2>Users</h2>
 	
-	<a href="?action=new">Add Contacts</a>
+	<a href="?action=new">Add Contact</a>
 	
-<table class="table table-hover table-bordered table-striped">
-	<thead>
-	<tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Type</th>
-		<th></th>
-	</tr>
-	</thead>
-	<tbody>
-	<? foreach ($model as $rs): ?>
+	<table class="table table-hover table-bordered table-striped">
+		<thead>
 		<tr>
-			<td><?=$rs['FirstName']?></td> 
-			<td><?=$rs['LastName']?></td>
-			<td><?=$rs['UserType']?></td>
-			<td>
-				<a class="glyphicon .glyphicon-file" href="?action=details&id=<?=$rs['id']?>" data-toggle="#mymodal/>
-				<a class="glyphicon .glyphicon-pencil" href="?action=edit&id=<?=$rs['id']?>"/>
-				<a class="glyphicon .glyphicon-trash" href="?action=delete&id=<?=$rs['id']?>"/>
-			</td>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Type</th>
+			<th></th>
 		</tr>
-			
-	<? endforeach ?>
-	</tbody>
-
-</table>
+		</thead>
+		<tbody>
+		<? foreach ($model as $rs): ?>
+			<tr>
+				<td><?=$rs['FirstName']?></td>
+				<td><?=$rs['LastName']?></td>
+				<td><?=$rs['UserType']?></td>
+				<td>
+					<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$rs['id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
+					<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$rs['id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
+					<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$rs['id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
+				</td>
+			</tr>
+		<? endforeach ?>
+		</tbody>
+	</table>
 </div>
 
-<div id="mymodal> </div>
+<div id="myModal" class="modal fade"></div>
 
-
-<?function Scriots(){ ?>
-	<script src='//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js'></script>
-	<script types="text/javascript">
+</div>
+  <? function Scripts(){ ?>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
 		$(".table").dataTable();
 	</script>
 <? } ?>

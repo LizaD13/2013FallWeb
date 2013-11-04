@@ -1,7 +1,10 @@
-<div class="container">
-	<form action="?action=delete">
-		<h3>Are you sure you want to delete <?=$model['FirstName']?> <?=$model['LastName'] ?></h3>
-		<input type="submit" class="btn btn-default" value
-	</form>
+<h3>
+	Are you sure you want to delete
+	<?=$model['FirstName']?> <?=$model['LastName']?>
+</h3>
+<form action="?action=delete" method="post">
+	<input type="hidden" name="id" value="<?=$model['id']?>" />
+	<input type="submit" value="Delete" class="btn btn-primary" />
+	<a href="?action=list">No, your right.</a>
 	
-</div>
+</form>
