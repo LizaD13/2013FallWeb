@@ -19,24 +19,26 @@ include_once __DIR__ . '/../Models/Product_Keywords.php';
 function GetConnection()
 {
 	global $sql_password;
-	$conn = new mysqli('localhost', 'n02359129', $sql_password, 'n02359129_db');
+	$conn = new mysqli('localhost', 'plotkinm', $sql_password, 'plotkinm_db');
 	return $conn;
 }
 
 function fetch_all($sql)
-	{
-		$ret = array();
-		$conn = GetConnection();
-		$result = $conn->query($sql);
-		
-		while ($rs = $result->fetch_assoc()) {
-			$ret[] = $rs;
-		}
-		
-		$conn->close();
-		return $ret;
+{
+	$ret = array();
+	$conn = GetConnection();
+	$result = $conn->query($sql);
+	echo $conn->error;
+	
+	while ($rs = $result->fetch_assoc()) {
+		$ret[] = $rs;
 	}
 	
+	
+	$conn->close();
+	return $ret;
+}
+
 function fetch_one($sql)
 {
 	$arr = fetch_all($sql);

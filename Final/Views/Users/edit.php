@@ -34,7 +34,13 @@
 		<div class="form-group <?=isset($errors['UserType']) ? 'has-error' : ''?>">
 			<label for="UserType" class="col-sm-2 control-label">User Type</label>
 			<div class="col-sm-10">
-				<input type="text" name="UserType" id="UserType" placeholder="User Type" class="form-control "  value="<?=$model['UserType']?>" />
+				<select name="UserType" id="UserType" class="form-control ">
+					<? foreach (Keywords::GetSelectListFor(2) as $keywordRs): ?>
+						<option value="<?=$keywordRs['id']?>"><?=$keywordRs['Name']?></option>
+					<? endforeach; ?>
+				</select>
+				
+				
 			</div>
 			<span><?=@$errors['UserType']?></span>
 		</div>
@@ -47,3 +53,13 @@
 		</div>
 	</form>
 </div>
+<script type="text/javascript">
+	$(function(){
+		$("#UserType").val(<?=$model['UserType']?>);
+	})	
+</script>
+
+
+
+
+

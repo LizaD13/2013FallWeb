@@ -9,7 +9,7 @@
 	  <dt>Password</dt>
 	  <dd><?=$model['Password']?></dd>
 	  <dt>UserType</dt>
-	  <dd><?=$model['UserType']?></dd>
+	  <dd><?=$model['UserType_Name']?></dd>
 	</dl>
 
 </div>

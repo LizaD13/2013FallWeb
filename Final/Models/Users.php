@@ -8,9 +8,18 @@ class Users {
 	static public function Get($id=null)
 	{
 		if(isset($id)){
-			return fetch_all("SELECT * FROM 2013Fall_Users WHERE id=$id");			
+			$sql = "	SELECT U.*, K.Name as UserType_Name
+						FROM 2013Fall_Users U
+							Join 2013Fall_Keywords K ON U.`UserType`=K.id
+						WHERE U.id=$id
+					";
+			return fetch_one($sql);			
 		}else{
-			return fetch_all('SELECT * FROM 2013Fall_Users');			
+			$sql = "	SELECT U.*, K.Name as UserType_Name
+						FROM 2013Fall_Users U
+							Join 2013Fall_Keywords K ON U.`UserType`=K.id
+					";
+			return fetch_all($sql);			
 		}
 	}
 	
