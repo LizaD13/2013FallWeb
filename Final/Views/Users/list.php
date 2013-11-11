@@ -3,6 +3,10 @@
 	tr.success, .table tr.success2 tr.success td{
 		background-color: #FFAA00;
 	}
+	#table-wrapper{
+		transition: width .5s;
+		-webkit-transition: width .5s;
+	}
 </style>
 <div class="container">
 	
@@ -16,7 +20,7 @@
 	<? endif; ?>
 	
 	<a href="?action=new">Add Contact</a>
-	
+	<div id="table-wrapper" class="col-md-12">
 	<table class="table table-hover table-bordered table-striped">
 		<thead>
 		<tr>
@@ -41,9 +45,11 @@
 		<? endforeach ?>
 		</tbody>
 	</table>
+	</div>
+	<div id="details" class="col-md-6"></div>
 </div>
 
-<div id="myModal" class="modal fade"></div>
+<div id="myModal" class="modal fade">
 
 </div>
   <? function Scripts(){ ?>
@@ -55,9 +61,38 @@
 			$(this).closest(".alert").slideUp();
 		});
 		
+		/*
+		 * 
 		$(".table tr").click(function()){
 			$(this).addClass("success");
+		}); 
+		*/
+		
+		$(".table a").click(function(){
+			
+			if($(this).closest("tr".hasClass("success2")){
+				$(".success2").removeClass("success2");
+				$(".table-wrapper").removeClass("col-md-6").addClass("col-md-12");
+				$("#details").html('');
+			}else
+				$(".success2").removeClass("success2");
+				$(this).closest("tr").addClass("success2");
+				$("#table-wraper").removeClass("col-md-12").addClass("col-md-6");
+							
+			$("#details").load(this.href, {format. "plain"}, function(){
+				$("#details form").submit(HandleSubmit);
+			});
+			
+		}
+			
+			return false;
 		});
+		
+		var HandleSubmit = function (){
+			$("#details").html($(this).serialize());
+			return false;
+			
+		}
 	})
 	</script>
 <? } ?>
