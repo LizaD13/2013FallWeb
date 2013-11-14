@@ -19,7 +19,7 @@ include_once __DIR__ . '/../Models/Product_Keywords.php';
 function GetConnection()
 {
 	global $sql_password;
-	$conn = new mysqli('localhost', 'plotkinm', $sql_password, 'plotkinm_db');
+	$conn = new mysqli('localhost', 'n02359129', $sql_password, 'n02359129_db');
 	return $conn;
 }
 

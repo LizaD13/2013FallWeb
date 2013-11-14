@@ -9,15 +9,15 @@ class Users {
 	{
 		if(isset($id)){
 			$sql = "	SELECT U.*, K.Name as UserType_Name
-						FROM 2013Fall_Users U
-							Join 2013Fall_Keywords K ON U.`UserType`=K.id
+						FROM Users U
+							Join Keywords K ON U.`keywords_id`=K.id
 						WHERE U.id=$id
 					";
 			return fetch_one($sql);			
 		}else{
 			$sql = "	SELECT U.*, K.Name as UserType_Name
-						FROM 2013Fall_Users U
-							Join 2013Fall_Keywords K ON U.`UserType`=K.id
+						FROM Users U
+							Join Keywords K ON U.`keywords_id`=K.id
 					";
 			return fetch_all($sql);			
 		}
@@ -25,7 +25,7 @@ class Users {
 	
 	static public function Blank()
 	{
-		return array( 'id'=>null, 'FirstName'=> null,'LastName'=> null,'Password'=> null,'UserType'=> null );
+		return array( 'id'=>null, 'FirstName'=> null,'LastName'=> null,'Password'=> null,'keywords_id'=> null );
 	}
 	
 	static public function Save($row)
@@ -33,12 +33,12 @@ class Users {
 		$conn = GetConnection();
 		$row2 = Users::Encode($row, $conn);
 		if($row['id']){
-			$sql =	" UPDATE 2013Fall_Users "
+			$sql =	" UPDATE Users "
 				.	" Set FirstName='$row2[FirstName]', LastName='$row2[LastName]', Password='$row2[Password]', UserType='$row2[UserType]' "
 				.	" WHERE id=$row2[id] ";
 		}else{
-			$sql = 	" Insert Into 2013Fall_Users (FirstName, LastName, Password, UserType) "
-				.	" Values ('$row2[FirstName]', '$row2[LastName]', '$row2[Password]', '$row2[UserType]') ";			
+			$sql = 	" Insert Into Users (FirstName, LastName, Password, keywords_id) "
+				.	" Values ('$row2[FirstName]', '$row2[LastName]', '$row2[Password]', '$row2[keywords_id]') ";			
 		}
 		
 		$conn->query($sql);
@@ -56,7 +56,7 @@ class Users {
 	static public function Delete($id)
 	{
 		$conn = GetConnection();
-		$sql =	" DELETE From 2013Fall_Users WHERE id=$id ";
+		$sql =	" DELETE From Users WHERE id=$id ";
 				
 		$conn->query($sql);
 		//echo $sql; 
@@ -75,8 +75,8 @@ class Users {
 		$errors = array();
 		if(!$row['FirstName']) $errors['FirstName'] = 'id required';
 		if(!$row['LastName']) $errors['LastName'] = 'id required';
-		if(!is_numeric( $row['UserType'])) $errors['UserType'] = 'must be a number';
-		if(!$row['UserType']) $errors['UserType'] = 'id required';
+		if(!is_numeric( $row['keywords_id'])) $errors['keywords_id'] = 'must be a number';
+		if(!$row['keywords_id']) $errors['keywords_id'] = 'id required';
 		
 		return count($errors) ? $errors : null;
 	}

@@ -31,10 +31,10 @@
 			</div>
 			<span><?=@$errors['Password']?></span>
 		</div>
-		<div class="form-group <?=isset($errors['UserType']) ? 'has-error' : ''?>">
-			<label for="UserType" class="col-sm-2 control-label">User Type</label>
+		<div class="form-group <?=isset($errors['keywords_id']) ? 'has-error' : ''?>">
+			<label for="keywords_id" class="col-sm-2 control-label">User Type</label>
 			<div class="col-sm-10">
-				<select name="UserType" id="UserType" class="form-control ">
+				<select name="keywords_id" id="keywords_id" class="form-control ">
 					<? foreach (Keywords::GetSelectListFor(2) as $keywordRs): ?>
 						<option value="<?=$keywordRs['id']?>"><?=$keywordRs['Name']?></option>
 					<? endforeach; ?>
@@ -42,7 +42,7 @@
 				
 				
 			</div>
-			<span><?=@$errors['UserType']?></span>
+			<span><?=@$errors['keywords_id']?></span>
 		</div>
 
 		
@@ -55,7 +55,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		$("#UserType").val(<?=$model['UserType']?>);
+		$("#keywords_id").val(<?=$model['keywords_id']?>);
 	})	
 </script>
 
