@@ -1,7 +1,7 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" />
 <style>
-	tr.success, .table tr.success2 tr.success td{
-		background-color: #FFAA00;
+	.table tr.success2, .table tr.success2 td{
+		background-color: #FFAA00 !important; 
 	}
 	#table-wrapper{
 		transition: width .5s;
@@ -32,16 +32,7 @@
 		</thead>
 		<tbody>
 		<? foreach ($model as $rs): ?>
-			<tr class=" <?= $rs['id']==$_REQUEST['id'] ? 'success' : '' ?> ">
-				<td><?=$rs['FirstName']?></td>
-				<td><?=$rs['LastName']?></td>
-				<td><?=$rs['UserType_Name']?></td>
-				<td>
-					<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$rs['id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
-					<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$rs['id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
-					<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$rs['id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
-				</td>
-			</tr>
+			<? include 'item.php'; ?>
 		<? endforeach ?>
 		</tbody>
 	</table>
@@ -50,10 +41,14 @@
 </div>
 
 <div id="myModal" class="modal fade">
+	
+</div>
+
 
 </div>
   <? function Scripts(){ ?>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
 		$(".table").dataTable();
@@ -62,36 +57,42 @@
 		});
 		
 		/*
-		 * 
-		$(".table tr").click(function()){
-			$(this).addClass("success");
-		}); 
+		$(".table tr").click(function(){
+		});
 		*/
-		
 		$(".table a").click(function(){
 			
-			if($(this).closest("tr".hasClass("success2")){
+			
+			if($(this).closest("tr").hasClass("success2")){
 				$(".success2").removeClass("success2");
-				$(".table-wrapper").removeClass("col-md-6").addClass("col-md-12");
-				$("#details").html('');
-			}else
+				$("#table-wrapper").removeClass("col-md-6").addClass("col-md-12");
+				$("#details").html('');			
+			}else{
 				$(".success2").removeClass("success2");
 				$(this).closest("tr").addClass("success2");
-				$("#table-wraper").removeClass("col-md-12").addClass("col-md-6");
-							
-			$("#details").load(this.href, {format. "plain"}, function(){
-				$("#details form").submit(HandleSubmit);
-			});
-			
-		}
+				$("#table-wrapper").removeClass("col-md-12").addClass("col-md-6");
+				
+				$("#details").load(this.href, {format: "plain"}, function(){
+					$("#details form").submit(HandleSubmit);					
+				});				
+			}
 			
 			return false;
 		});
 		
 		var HandleSubmit = function (){
-			$("#details").html($(this).serialize());
-			return false;
+			var data = $(this).serializeArray();
+			data.push({name:'format', value:'plain'});
+			$.post(this.action, data, function(results){
+				if($(results).find("form").length){
+					$("#details").html(results);
+				}else{
+					$(".success2").replaceAll($(results).html())
+				}
+				
+			});
 			
+			return false;
 		}
 	})
 	</script>

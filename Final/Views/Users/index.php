@@ -23,12 +23,19 @@ switch ($action) {
 			$errors = Users::Save($_REQUEST);			
 		}
 		if(!$errors){
-			header("Location: ?status=Saved&id=$_REQUEST[id]");
-			die();
-		}			
+			if($format == 'plain'){
+				$view = 'item.php';
+				$rs = Users::Get($_REQUEST['id']);
+			}else{
+				header("Location: ?status=Saved&id=$_REQUEST[id]");
+				die();
+			}
+		}else{
 			$model = $_REQUEST;
 			$view = 'edit.php';
 			$title	= "Edit: $model[FirstName] $model[LastName]"	;	
+		}			
+			
 		break;
 		
 	case 'edit':
@@ -63,7 +70,7 @@ switch ($format) {
 		break;
 	
 	case 'plain':
-	include $view;
+		include $view;
 		break;
 	
 	default:

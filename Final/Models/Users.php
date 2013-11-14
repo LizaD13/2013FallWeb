@@ -75,7 +75,7 @@ class Users {
 		$errors = array();
 		if(!$row['FirstName']) $errors['FirstName'] = 'id required';
 		if(!$row['LastName']) $errors['LastName'] = 'id required';
-		if(!is_numeric( $row['keywords_id'])) $errors['keywords_id'] = 'must be a number';
+		if(!is_numeric($row['keywords_id'])) $errors['keywords_id'] = 'must be a number';
 		if(!$row['keywords_id']) $errors['keywords_id'] = 'id required';
 		
 		return count($errors) ? $errors : null;

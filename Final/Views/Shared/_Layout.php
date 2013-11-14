@@ -23,7 +23,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			    </button>
-		      	<a class="navbar-brand" href="#">Playground</a>
+		      	<a class="navbar-brand" href="#">Final</a>
 			</div>
 		
 			<div class="collapse navbar-collapse nav-c">
@@ -45,7 +45,7 @@
 				        </ul>
 				      </li>
       			</ul>
-				<p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Moshe Plotkin</a></p>
+				<p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Liza Davidson</a></p>
 			</div>
 		</div>
 	</div>
