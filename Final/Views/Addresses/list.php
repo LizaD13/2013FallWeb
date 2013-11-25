@@ -27,6 +27,7 @@
 	<table class="table table-hover table-bordered table-striped">
 		<thead>
 		<tr>
+			<th>Last Name</th>
 			<th>Street</th>
 			<th>City</th>
 			<th>State</th>
@@ -47,12 +48,12 @@
 </div>
 
 <script id="row-template" type="text/x-handlebars-template">
+			<td>{{LastName}}</td>
 			<td>{{street}}</td>
 			<td>{{city}}</td>
 			<td>{{state}}</td>
 			<td>{{zip}}</td>
 			<td>{{Address_Type}}</td>
-			
 			<td>
 				<a class="glyphicon glyphicon-file" href="?action=details&id={{id}}" ></a>
 				<a class="glyphicon glyphicon-pencil" href="?action=edit&id={{id}}" ></a>
