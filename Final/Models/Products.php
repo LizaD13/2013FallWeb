@@ -9,7 +9,7 @@ class Products {
 	{
 		$ret = array();
 		$conn = GetConnection();
-		$result = $conn->query('SELECT * FROM Users');
+		$result = $conn->query('SELECT * FROM Products');
 		
 		while ($rs = $result->fetch_assoc()) {
 			$ret[] = $rs;

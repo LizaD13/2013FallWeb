@@ -47,9 +47,9 @@
 			<td>{{LastName}}</td>
 			<td>{{UserType_Name}}</td>
 			<td>
-				<a class="glyphicon glyphicon-file" href="?action=details&id={{'id'}}" ></a>
-				<a class="glyphicon glyphicon-pencil" href="?action=edit&id={{'id'}}" ></a>
-				<a class="glyphicon glyphicon-trash" href="?action=delete&id={{'id'}}" ></a>
+				<a class="glyphicon glyphicon-file" href="?action=details&id={{id}}" ></a>
+				<a class="glyphicon glyphicon-pencil" href="?action=edit&id={{id}}" ></a>
+				<a class="glyphicon glyphicon-trash" href="?action=delete&id={{id}}" ></a>
 			</td>
 </script>
 

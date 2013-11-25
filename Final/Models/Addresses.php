@@ -8,24 +8,24 @@ class Addresses {
 	static public function Get($id=null)
 	{
 		if(isset($id)){
-			$sql = "	SELECT U.*,US.LastName as 'User' K.Name as 'Address Type'
+			$sql = "	SELECT U.*, US.LastName as User, K.Name as AddressType
 						FROM 
 						Addresses U
 							Join 
 							Keywords K ON U.`Address_Type`=K.id
 							Join
-							Users US ON U.'Users_id' =US.id
+							Users US ON U.Users_id =US.id
 						WHERE U.id=$id
 					";
 			return fetch_one($sql);			
 		}else{
-			$sql = "	SELECT U.*,US.LastName as 'User' K.Name as 'Address Type'
+			$sql = "	SELECT U.*, US.LastName as User, K.Name as AddressType
 						FROM 
 						Addresses U
 							Join 
 							Keywords K ON U.`Address_Type`=K.id
 							Join
-							Users US ON U.'Users_id' =US.id
+							Users US ON U.Users_id =US.id
 						
 					";
 			return fetch_all($sql);			

@@ -34,7 +34,7 @@ class Users {
 		$row2 = Users::Encode($row, $conn);
 		if($row['id']){
 			$sql =	" UPDATE Users "
-				.	" Set FirstName='$row2[FirstName]', LastName='$row2[LastName]', Password='$row2[Password]', UserType='$row2[UserType]' "
+				.	" Set FirstName='$row2[FirstName]', LastName='$row2[LastName]', Password='$row2[Password]', keywords_id='$row2[keywords_id]' "
 				.	" WHERE id=$row2[id] ";
 		}else{
 			$sql = 	" Insert Into Users (FirstName, LastName, Password, keywords_id) "
