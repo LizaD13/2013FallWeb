@@ -5,6 +5,6 @@
 <form action="?action=delete" method="post">
 	<input type="hidden" name="id" value="<?=$model['id']?>" />
 	<input type="submit" value="Delete" class="btn btn-primary" />
-	<a href="?action=list">No, your right.</a>
+	<a href="?action=list">No, you're right.</a>
 	
 </form>

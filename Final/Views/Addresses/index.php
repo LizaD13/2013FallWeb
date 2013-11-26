@@ -7,26 +7,27 @@ $errors = null;
 
 switch ($action) {
 	case 'details':
-		$model  = Users::Get($_REQUEST['id']);
+		$model  = Addresses::Get($_REQUEST['id']);
+		$keywordRs  = Users::Get($_REQUEST['id']);
 		$view 	= 'details.php';
-		$title	= "Details for: $model[FirstName] $model[LastName]"	;	
+		$title	= "Details for: $keywordRs[LastName] $model[street] $model[city] $model[state] $model[zip]"	;	
 		break;
 		
 	case 'new':
-		$model = Users::Blank();
+		$model = Addresses::Blank();
 		$view 	= 'edit.php';		
-		$title	= "Create New User"	;	
+		$title	= "Create New Address"	;	
 		break;
 	
 	case 'save':
-		$errors = Users::Validate($_REQUEST);
+		$errors = Addresses::Validate($_REQUEST);
 		if(!$errors){
-			$errors = Users::Save($_REQUEST);			
+			$errors = Addresses::Save($_REQUEST);			
 		}
 		if(!$errors){
 			if($format == 'plain' || $format == 'json'){
 				$view = 'item.php';
-				$rs = $model = Users::Get($_REQUEST['id']);
+				$rs = $model = Addresses::Get($_REQUEST['id']);
 			}else{
 				header("Location: ?status=Saved&id=$_REQUEST[id]");
 				die();
@@ -34,34 +35,35 @@ switch ($action) {
 		}else{
 			$model = $_REQUEST;
 			$view = 'edit.php';
-			$title	= "Edit: $model[FirstName] $model[LastName]"	;	
+			$title	= "Edit: $model[street] $model[city] $model[state] $model[zip]"	;	
 		}			
 			
 		break;
 		
 	case 'edit':
-		$model  = Users::Get($_REQUEST['id']);
+		$model  = Addresses::Get($_REQUEST['id']);
+		$keywordRs  = Users::Get($_REQUEST['id']);
 		$view 	= 'edit.php';		
-		$title	= "Edit: $model[FirstName] $model[LastName]"	;	
+		$title	= "Edit: $keywordRs[LastName] $model[street] $model[city] $model[state] $model[zip]"	;	
 		break;
 		
 	case 'delete':
 		if(isset($_POST['id'])){
-			$errors = Users::Delete($_REQUEST['id']);			
+			$errors = Addresses::Delete($_REQUEST['id']);			
 			if(!$errors){
 				header("Location: ?");
 				die();
 			}							
 		}
-		$model  = Users::Get($_REQUEST['id']);
+		$model  = Addresses::Get($_REQUEST['id']);
 		$view 	= 'delete.php';					
-		$title	= "Edit: $model[FirstName] $model[LastName]"	;	
+		$title	= "Edit: $model[street] $model[city] $model[state] $model[zip]"	;	
 		break;
 	
 	default:
-		$model  = Users::Get();
+		$model  = Addresses::Get();
 		$view 	= 'list.php';
-		$title	= 'Users';		
+		$title	= 'Addresses';		
 		break;
 }
 

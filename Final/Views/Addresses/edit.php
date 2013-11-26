@@ -11,23 +11,23 @@
 		<input type="hidden" name="id" value="<?=$model['id']?>" />
 		
 		<div class="form-group <?=isset($errors['street']) ? 'has-error' : ''?>">
-			<label for="street" class="col-sm-2 control-label">First Name</label>
+			<label for="street" class="col-sm-2 control-label">Street</label>
 			<div class="col-sm-10">
-				<input type="text" name="street" id="street" placeholder="First Name" class="form-control " value="<?=$model['street']?>"  />
+				<input type="text" name="street" id="street" placeholder="street" class="form-control " value="<?=$model['street']?>"  />
 			</div>
 			<span><?=@$errors['street']?></span>
 		</div>
 		
 		<div class="form-group <?=isset($errors['city']) ? 'has-error' : ''?>">
-			<label for="city" class="col-sm-2 control-label">Last Name</label>
+			<label for="city" class="col-sm-2 control-label">City</label>
 			<div class="col-sm-10">
-				<input type="text" name="city" id="city" placeholder="Last Name" class="form-control " value="<?=$model['city']?>"  />
+				<input type="text" name="city" id="city" placeholder="city" class="form-control " value="<?=$model['city']?>"  />
 			</div>
 			<span><?=@$errors['city']?></span>
 		</div>
 		
 		<div class="form-group <?=isset($errors['state']) ? 'has-error' : ''?>">
-			<label for="state" class="col-sm-2 control-label">state</label>
+			<label for="state" class="col-sm-2 control-label">State</label>
 			<div class="col-sm-10">
 				<input type="state" name="state" id="state" placeholder="state" class="form-control "  value="<?=$model['state']?>" />
 			</div>
@@ -35,7 +35,7 @@
 		</div>
 		
 		<div class="form-group <?=isset($errors['zip']) ? 'has-error' : ''?>">
-			<label for="zip" class="col-sm-2 control-label">zip</label>
+			<label for="zip" class="col-sm-2 control-label">Zip</label>
 			<div class="col-sm-10">
 				<input type="zip" name="zip" id="zip" placeholder="zip" class="form-control "  value="<?=$model['zip']?>" />
 			</div>

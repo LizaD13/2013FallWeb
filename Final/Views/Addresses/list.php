@@ -9,8 +9,6 @@
 		-webkit-transition: width .5s;
 	}
 </style>
-
-
 <div class="container">
 	
 	<h2>Addresses</h2>

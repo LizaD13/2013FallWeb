@@ -41,13 +41,14 @@ class Addresses {
 	{
 		$conn = GetConnection();
 		$row2 = Addresses::Encode($row, $conn);
+		$keywordRs = Users::Get($_REQUEST['id']);
 		if($row['id']){
 			$sql =	" UPDATE Addresses "
-				.	" Set LastName='$row2[LastName]', street='$row2[street]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]' "
+				.	" Set LastName='$kewwordRs[LastName]', street='$row2[street]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]' "
 				.	" WHERE id=$row2[id] ";
 		}else{
 			$sql = 	" Insert Into Addresses (LastName, street, city, state, zip, Users_id, Address_Type) "
-				.	" Values ($row2[LastName]', street='$row2[street]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]') ";			
+				.	" Values ($keywordRs[LastName]', street='$row2[street]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]') ";			
 		}
 		
 		$conn->query($sql);
@@ -86,7 +87,6 @@ class Addresses {
 		if(!$row['city']) $errors['city'] = 'city required';
 		if(!$row['state']) $errors['state'] = 'state required';
 		if(!$row['zip']) $errors['zip'] = 'zip required';
-		if(!is_numeric($row['Address_Type'])) $errors['Address_Type'] = 'must be a number';
 		if(!$row['Address_Type']) $errors['Address_Type'] = 'id required';
 		
 		return count($errors) ? $errors : null;

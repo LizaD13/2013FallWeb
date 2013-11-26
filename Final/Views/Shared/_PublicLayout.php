@@ -8,32 +8,12 @@
     	body { padding-top: 70px; }
     </style>
   </head>
-  <body>
+  
+  <body style="background-color:#DDDDDD;">
+  <div class="container">	
   	<header>
-  		<div class="container">
-  			<h1>My website</h1>
-  		</div>
+  		<h1>My Website</h1>
   	</header>
-  	
-  	<div class="container">
-   	<!DOCTYPE html>
-<head>
-	<title>My Website-</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="jumbotron.css" rel="stylesheet">
-	<style>
-		body {
-			padding-top: 70px;
-		}
-	</style>
-
-</head>
-
-<body style="background-color:#DDDDDD;">
-	<header>
-
-		<div class="container">
 			 <div class="navbar navbar-default" role="navigation">
    			<div class="navbar-header">
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".nav-c">
@@ -49,7 +29,9 @@
 						<li class="dropdown">
 				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
 				        <ul class="dropdown-menu">
-				          <li><a href="#">Categories</a></li>
+				          <li><a href="#">body</a></li>
+				          <li><a href="#">hair</a></li>
+				          <li><a href="#">face</a></li>
 				        </ul>
 				      </li><li class="dropdown">
 				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account Settings <b class="caret"></b></a>
@@ -80,7 +62,7 @@
 		#left {
 			float: right;
 		}
-		.container2 {
+		.content {
 			padding-right: 250px;
 			padding-left: 250px;
 		}
@@ -94,8 +76,7 @@
 
 	</style>
 
-	<div class="container2">
-		<div >
+		<div class="content">
 			<?foreach($model as $item): ?>
 			<ul class="list-group">
 				<div class="row">
