@@ -1,6 +1,6 @@
 <div class="container">
 	<dl class="dl-horizontal">
-	  <dt>Users</dt>
+	  <dt>User</dt>
 	  <dd><?=$model['Users_id']?></dd>
 	   <dt>created_at</dt>
 	  <dd><?=$model['created_at']?></dd>
