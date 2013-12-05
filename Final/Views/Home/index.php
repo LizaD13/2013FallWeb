@@ -1,5 +1,6 @@
 <?
 	include "../../inc/_global.php";
+	session_start();
 	$model = Products::Get();
 	include "Home.php";
 	include "../Shared/_PublicLayout.php";
@@ -18,7 +19,14 @@ switch ($action) {
 		$model = Products::GetByCategory($_REQUEST);
 		break;
 	
-	
+	case 'addToCart':
+		if(!isset($_SESSION['cart'])) $_SESSION['cart'] = array ();
+		$cart = $_SESSION['cart'];
+		$cart[] = $_REQUEST['id'];
+		$_SESSION['cart'] = $cart;
+		header('Location: ?'); die();
+		break;
+			
 	default:
 		// $model  = Users::Get();
 		$view 	= 'Home.php';
