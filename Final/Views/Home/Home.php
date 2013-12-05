@@ -1,24 +1,31 @@
 <div id="container">
-	<div id="category-list";
-		<ul data-bind="foreach: categories">
-			<li class="nav nav-pills">
-				<a href="#" data-bind="text: Name"></a>
+	<div id="category-list">
+		<ul class="nav nav-pills" data-bind="foreach: categories">
+			<li>
+				<a href="#" data-bind="text: Name, click: $root.categoryClicked">Face</a>
+			</li>
+			<li>
+				<a href="#" data-bind="text: Name">Body</a>
+			</li>
+			<li>
+				<a href="#" data-bind="text: Name">Hair</a>
 			</li>
 		</ul>
 	</div>
 	
-	<div id="item-list">
-		
+	<div data-bind="foreach: products">
+		<div class="col-sm-3">
+			<div class="well">
+				<h5 data-bind="text: Name"></h5>
+			</div>
+		</div>	
 	</div>
 	
-	<div id="shopping-cart-list">
-		
-	</div>
 </div>
 
 <script type="text/html" id="shopping-cart-template">
 	<span class="glyphicon glyphicon-shopping-cart"></span>
-	Cart
+	<a href="#">Cart</a>
 	<span class="badge">0</span>
 </script>
 
@@ -34,14 +41,21 @@
 		
 		var vm = {
 			categories: ko.observableArray(),
-			currentCategory: ko.observable(),
+			products: ko.observableArray(),
+				
+				categoryClicked: function(){
+				$.getJSON('?action=products&format=json', { categoryId: this.id },function(results){
+					vm.products(results.model);
+			}
+			//currentCategory: ko.observable(),
 			
-			selectCategory: function(){
-				vm.currentCategory(this);
+			//selectCategory: function(){
+				//vm.currentCategory(this);
 			}
 		};
 		ko.applyBindings(vm);
-		$.getJSON('?action=categories&format=json', nukk, function(results){
+	
+		$.getJSON('?action=categories&format=json',function(results){
 			vm.categories(results.model);
 		})
 	});

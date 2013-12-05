@@ -7,48 +7,39 @@ class Addresses {
 	
 	static public function Get($id=null)
 	{
-		if(isset($id)){
-			$sql = "	SELECT U.*, US.LastName as User, K.Name as AddressType
+		$sql = 	" SELECT A.*, US.LastName as User, K.Name as AddressType
 						FROM 
-						Addresses U
+						Addresses A
 							Join 
-							Keywords K ON U.`Address_Type`=K.id
+							Keywords K ON A.`Address_Type`=K.id
 							Join
-							Users US ON U.Users_id =US.id
-						WHERE U.id=$id
-					";
+							Users US ON A.Users_id =US.id ";
+							
+		if(isset($id)){
+			$sql .= " WHERE A.id=$id ";
 			return fetch_one($sql);			
 		}else{
-			$sql = "	SELECT U.*, US.LastName as User, K.Name as AddressType
-						FROM 
-						Addresses U
-							Join 
-							Keywords K ON U.`Address_Type`=K.id
-							Join
-							Users US ON U.Users_id =US.id
-						
-					";
+			
 			return fetch_all($sql);			
 		}
 	}
 	
 	static public function Blank()
 	{
-		return array( 'id'=>null, 'street'=> null,'city'=> null,'state'=> null,'zip'=> null, 'Users_id'=> null,'Address_Type'=> null );
+		return array( 'id'=>null, 'address'=> null,'city'=> null,'state'=> null,'zip'=> null, 'Users_id'=> null,'Address_Type'=> null );
 	}
 	
 	static public function Save($row)
 	{
 		$conn = GetConnection();
 		$row2 = Addresses::Encode($row, $conn);
-		$keywordRs = Users::Get($_REQUEST['id']);
 		if($row['id']){
 			$sql =	" UPDATE Addresses "
-				.	" Set LastName='$kewwordRs[LastName]', street='$row2[street]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]' "
+				.	" Set address='$row2[address]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]' "
 				.	" WHERE id=$row2[id] ";
 		}else{
-			$sql = 	" Insert Into Addresses (LastName, street, city, state, zip, Users_id, Address_Type) "
-				.	" Values ($keywordRs[LastName]', street='$row2[street]', city='$row2[city]', state='$row2[state]', zip='$row2[zip]', Users_id='$row2[Users_id]' Address_Type='$row2[Address_Type]') ";			
+			$sql = 	" Insert Into Addresses (address, city, state, zip, Users_id, Address_Type) "
+				.	" Values ('$row2[address]', '$row2[city]', '$row2[state]', '$row2[zip]', '$row2[Users_id]' '$row2[Address_Type]') ";			
 		}
 		
 		$conn->query($sql);

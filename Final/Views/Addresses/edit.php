@@ -10,12 +10,12 @@
 	<form action="?action=save" method="post"  class="form-horizontal row">
 		<input type="hidden" name="id" value="<?=$model['id']?>" />
 		
-		<div class="form-group <?=isset($errors['street']) ? 'has-error' : ''?>">
+		<div class="form-group <?=isset($errors['address']) ? 'has-error' : ''?>">
 			<label for="street" class="col-sm-2 control-label">Street</label>
 			<div class="col-sm-10">
-				<input type="text" name="street" id="street" placeholder="street" class="form-control " value="<?=$model['street']?>"  />
+				<input type="text" name="address" id="address" placeholder="address" class="form-control " value="<?=$model['address']?>"  />
 			</div>
-			<span><?=@$errors['street']?></span>
+			<span><?=@$errors['address']?></span>
 		</div>
 		
 		<div class="form-group <?=isset($errors['city']) ? 'has-error' : ''?>">
@@ -46,7 +46,7 @@
 			<label for="Address_Type" class="col-sm-2 control-label">Address Type</label>
 			<div class="col-sm-10">
 				<select name="Address_Type" id="Address_Type" class="form-control ">
-					<? foreach (Keywords::GetSelectListFor(3) as $keywordRs): ?>
+					<? foreach (Keywords::Get() as $keywordRs): ?>
 						<option value="<?=$keywordRs['id']?>"><?=$keywordRs['Name']?></option>
 					<? endforeach; ?>
 				</select>	

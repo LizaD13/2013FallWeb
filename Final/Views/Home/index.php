@@ -11,18 +11,18 @@ $errors = null;
 switch ($action) {
 	
 	case "products";
-		$model = Products::GetAllInCategory($_REQUEST['CategoryId']);
+		$model = Products::GetCategories();
 		break;
 	
 	case 'categories';
-		$model = Products::GetCategories();
+		$model = Products::GetByCategory($_REQUEST);
 		break;
 	
 	
 	default:
 		// $model  = Users::Get();
 		$view 	= 'Home.php';
-		$title	= 'Users';		
+		$title	= 'Store';		
 		break;
 }
 

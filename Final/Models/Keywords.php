@@ -8,16 +8,15 @@ class Keywords {
 	static public function Get($id=null)
 	{
 		if(isset($id)){
-			$sql = "	SELECT U.*, K.Name as Name
+			$sql = "	SELECT *
 						FROM Keywords K
-							Join Keywords KY ON K.`keywords_id`=K.id
-						WHERE U.id=$id
+						WHERE id=$id
 					";
 			return fetch_one($sql);			
 		}else{
-			$sql = "	SELECT U.*, K.Name as Name
+			$sql = "	SELECT *
 						FROM Keywords K
-							Join Keywords KY ON K.`keywords_id`=K.id
+							
 					";
 			return fetch_all($sql);			
 		}

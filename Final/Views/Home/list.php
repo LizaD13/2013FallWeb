@@ -11,26 +11,23 @@
 </style>
 <div class="container">
 	
-	<h2>Addresses</h2>
+	<h2>Users</h2>
 	
 	<? if(isset($_REQUEST['status']) && $_REQUEST['status'] == 'Saved'): ?>
 		<div class="alert alert-success">
 			<button type="button" class="close" aria-hidden="true">&times;</button>
-			<b>Success!</b> You're Address has been saved.
+			<b>Success!</b> You're User has been saved.
 		</div>
 	<? endif; ?>
 	
-	<a href="?action=new" id="add-link" >Add Address</a>
+	<a href="?action=new" id="add-link" >Add Contact</a>
 	<div id="table-wrapper" class="col-md-12">
 	<table class="table table-hover table-bordered table-striped">
 		<thead>
 		<tr>
-			<th>User</th>
-			<th>Street</th>
-			<th>City</th>
-			<th>State</th>
-			<th>Zip</th>
-			<th>Address Type</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Type</th>
 			<th></th>
 		</tr>
 		</thead>
@@ -46,17 +43,14 @@
 </div>
 
 <script id="row-template" type="text/x-handlebars-template">
-			<td>{{User}}</td>
-			<td>{{address}}</td>
-			<td>{{city}}</td>
-			<td>{{state}}</td>
-			<td>{{zip}}</td>
-			<td>{{Address_Type}}</td>
-			<td>
-				<a class="glyphicon glyphicon-file" href="?action=details&id={{id}}" ></a>
-				<a class="glyphicon glyphicon-pencil" href="?action=edit&id={{id}}" ></a>
-				<a class="glyphicon glyphicon-trash" href="?action=delete&id={{id}}" ></a>
-			</td>
+		<td>{{FirstName}}</td>
+		<td>{{LastName}}</td>
+		<td>{{UserType_Name}}</td>
+		<td>
+			<a class="glyphicon glyphicon-file" href="?action=details&id={{id}}" ></a>
+			<a class="glyphicon glyphicon-pencil" href="?action=edit&id={{id}}" ></a>
+			<a class="glyphicon glyphicon-trash" href="?action=delete&id={{id}}" ></a>
+		</td>
 </script>
 
 <script id="tbody-template" type="text/x-handlebars-template">
@@ -119,7 +113,7 @@
 					}else{
 						$(".success2").html(templateRow(results.model));					
 					}
-					toastr.success("Your address has been saved!", "Success");
+					toastr.success("Your record has been saved!", "Success");
 				}
 				
 			}, 'json');
@@ -148,7 +142,6 @@
 	})
 	</script>
 <? } ?>
-
 
 
 
