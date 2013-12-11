@@ -8,7 +8,7 @@
 		}
 		public static function GetUser()
 		{
-			return $_SESSION['User'];
+			return $_SESSION['Users'];
 		}
 		public static function HasPermission()
 		{
@@ -30,7 +30,7 @@
 		static public function Secure()
 		{
 			if(!self::IsLoggedIn()){
-				header('Location' . "/~n02359129/2013/Final/Views/Auth?action=login"); die();
+				header('Location: ' . "/~n02359129/2013/Final/Views/Auth?action=login"); die();
 			}
 		}
 	}

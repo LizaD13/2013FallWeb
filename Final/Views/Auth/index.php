@@ -7,16 +7,15 @@ $errors = null;
 
 switch ($action) {
 	case 'login':
-		$model = array('LastName' => null, 'Password' => null);
+		$model = array('LastName'=>null, 'Password' => null);
 		$view 	= 'login.php';
 		$title	= "Login"	;	
 		break;
 		
-	case 'submitLogin';
-	Auth:LogIn($_REQUEST['LastName'], $_REQUEST['Password']);
+	case 'submitLogin':
+	Auth::LogIn($_REQUEST['LastName'], $_REQUEST['Password']);
 	header("Location: ../Users/");
 	break;
-		
 	
 }
 
@@ -29,8 +28,8 @@ switch ($format) {
 		include $view;
 		break;
 		
-	case 'json';
-		echo json_encode(array('model' => $model, 'erroes' => $errors));
+	case 'json':
+		echo json_encode(array('model' => $model, 'errors'=> $errors));
 		break;
 	
 	default:

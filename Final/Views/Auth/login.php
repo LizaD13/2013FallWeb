@@ -7,12 +7,9 @@
 		<? endforeach; ?>
 		</ul>
 	<? endif; ?>
-	<form action="?action=submitLogin" method="post"  class="form-horizontal row">
+	<form action="?action=submitlogin" method="post"  class="form-horizontal row">
 		
 		
-		<div class="form-group <?=isset($errors['FirstName']) ? 'has-error' : ''?>">
-		
-		</div>
 		<div class="form-group <?=isset($errors['LastName']) ? 'has-error' : ''?>">
 			<label for="LastName" class="col-sm-2 control-label">Last Name</label>
 			<div class="col-sm-10">
@@ -38,7 +35,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		$("#keywords_id").val(<?=$model['keywords_id']?>);
+		$("#UserType").val(<?=$model['UserType']?>);
 	})	
 </script>
 
