@@ -4,18 +4,25 @@
     <title>My Website - <?=@$title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
-    <style type="text/css">
-    	body { padding-top: 70px; }
+    <style type="text/css" media="screen">
+        .navbar-nav>li>a.compact {
+        	padding-top: 5px;
+        	padding-bottom: 5px;
+        }
+        .navbar-form{
+        	max-width: 500px;
+        }
     </style>
   </head>
-  
   <body style="background-color:#DDDDDD;">
-  <div class="container">	
+  
+   	<div class="container"> 	
   	<header>
   		<h1>My Website</h1>
   	</header>
-			 <div class="navbar navbar-default" role="navigation">
-   			<div class="navbar-header">
+
+			 <div id="navigation" style="background-color:#fff;">
+			 <div class="navbar-header">
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".nav-c">
 			    	<span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
@@ -41,11 +48,9 @@
 				      </li>
       			</ul>
 				<p class="navbar-text pull-right" id="shopping-cart"> <a href="#" class="navbar-link">Cart</a></p>
+			</div>	
 			</div>
-		</div>
-	</div>
-
-		</div>
+		
 	</header>
 
 	
@@ -103,7 +108,7 @@
 								<br>
 								<br>
 							</div>
-							<button type="button" id="left" class="btn btn-success" href="?action=verify&amp;id=1&amp;format=dialog" data-toggle="modal" data-target="#myModal">
+							<button type="button" id="left" class="btn btn-success" href= "?action=details&id=1&format=dialog" data-toggle="modal" data-target="#myModal">
 								Add to Cart
 							</button>
 						</div>
@@ -112,6 +117,7 @@
 				</div>
 			</ul>
 			<?endforeach;?>
+		</div>
 		</div>
 
 		

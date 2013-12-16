@@ -58,18 +58,17 @@ switch ($action) {
 		break;
 	
 	case 'categories':
-		$model  = Products::GetCategories();
-		$view 	= 'list.php';
+		$model  = Product_Categories::Get();
+		//$view 	= 'list.php';
 		break;
 
 	case 'list':
-		@$CategoryId = $_REQUEST['CategoryId'];
-		$model  = Products::GetItemsInCategory($CategoryId);
-		$view 	= 'list.php';
+		$model  = Products::GetItemsInCategory($_REQUEST['CategoryId']) ;
+		//$view 	= 'list.php';
 		break;
 		
 	default:
-		//$model  = Products::Get();
+		$model  = array ('LastName' => null, 'Password' => null);
 		$view 	= 'home.php';
 		$title	= 'Home';		
 		break;

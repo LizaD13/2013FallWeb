@@ -1,43 +1,31 @@
 <?php
+
+/**
+ * 
+ */
 class Products {
 	
-	static public function Get($id=null)
+	static public function Get()
 	{
-		if(isset($id)){
-			$sql = "	SELECT U.*, K.Name as UserType_Name
-						FROM Users U
-							Join Keywords K ON U.`keywords_id`=K.id
-						WHERE U.id=$id
-					";
-			return fetch_one($sql);			
-		}else{
-			$sql = "	SELECT U.*, K.Name as UserType_Name
-						FROM Users U
-							Join Keywords K ON U.`keywords_id`=K.id
-					";
-			return fetch_all($sql);			
+		$ret = array();
+		$conn = GetConnection();
+		$result = $conn->query('SELECT * FROM Products');
+		
+		while ($rs = $result->fetch_assoc()) {
+			$ret[] = $rs;
 		}
+		
+		$conn->close();
+		return $ret;
 	}
 	
-	static public function GetCategories($id=null)
+	static public function GetItemsInCategory($id=null)
 	{
-		if(isset($id)){
-			$sql = "	SELECT *
-						FROM product_categories_id
-					";
-			
-			return fetch_all($sql);			
-		}
+		$sql = "SELECT * FROM Products
+				WHERE product_categories_id = $id";
+				
+				return fetch_all($sql);
+		
 	}
 	
-static public function GetByCategories($id=null)
-	{
-		if(isset($id)){
-			$sql = "	SELECT *
-						FROM Products
-					";
-			
-			return fetch_all($sql);			
-		}
-	}
 }
